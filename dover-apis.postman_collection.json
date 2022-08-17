@@ -1,0 +1,335 @@
+{
+	"info": {
+		"_postman_id": "1b3e529b-5556-44e6-83ec-8a4e83a136e3",
+		"name": "Dover",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication Request (get login cookie)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "j_username",
+							"value": "AzurePOC",
+							"type": "text"
+						},
+						{
+							"key": "j_password",
+							"value": "X1tempPassword",
+							"type": "text"
+						},
+						{
+							"key": "j_validate",
+							"value": "true",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://author-p16578-e42114.adobeaemcloud.com/content/dam/dover-corp/j_security_check",
+					"protocol": "https",
+					"host": [
+						"author-p16578-e42114",
+						"adobeaemcloud",
+						"com"
+					],
+					"path": [
+						"content",
+						"dam",
+						"dover-corp",
+						"j_security_check"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dover Boomi - Get Token",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded; charset=utf-8",
+						"type": "text"
+					},
+					{
+						"key": "Host",
+						"value": "login.microsoftonline.com",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "resource=api%3A%2F%2Fccfdb6a7-55f8-4f54-aee6-db0404fe2dad&client_id=781fbfcb-c90d-4506-a4b2-2ad3e5062f0f&client_secret=tcL~u1yZp3TBXhj~.s3-9w4_mTDH87_h1f&client_info=1&grant_type=client_credentials"
+				},
+				"url": {
+					"raw": "https://login.microsoftonline.com/dover.onmicrosoft.com/oauth2/token",
+					"protocol": "https",
+					"host": [
+						"login",
+						"microsoftonline",
+						"com"
+					],
+					"path": [
+						"dover.onmicrosoft.com",
+						"oauth2",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dover Boomi - Get Single Product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtnMkxZczJUMENUaklmajRydDZKSXluZW4zOCIsImtpZCI6ImtnMkxZczJUMENUaklmajRydDZKSXluZW4zOCJ9.eyJhdWQiOiJhcGk6Ly9jY2ZkYjZhNy01NWY4LTRmNTQtYWVlNi1kYjA0MDRmZTJkYWQiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8zZDJkMmI2Zi0wNjFhLTQ4YjYtYjRiMy05MzEyZDY4N2UzYTEvIiwiaWF0IjoxNjA3OTU5MDYxLCJuYmYiOjE2MDc5NTkwNjEsImV4cCI6MTYwNzk2Mjk2MSwiYWlvIjoiRTJSZ1lLamFtdUxXTFhnL2Fydk8yYXM4WDZxckFRPT0iLCJhcHBpZCI6Ijc4MWZiZmNiLWM5MGQtNDUwNi1hNGIyLTJhZDNlNTA2MmYwZiIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzNkMmQyYjZmLTA2MWEtNDhiNi1iNGIzLTkzMTJkNjg3ZTNhMS8iLCJvaWQiOiI0YzcxZTA0ZS00NDk1LTQ4MWMtYWUxMy00ZDdhMzcyZGQxMDkiLCJyaCI6IjAuQUFBQWJ5c3RQUm9HdGtpMHM1TVMxb2Zqb2N1X0gzZ055UVpGcExJcTAtVUdMdzhEQUFBLiIsInN1YiI6IjRjNzFlMDRlLTQ0OTUtNDgxYy1hZTEzLTRkN2EzNzJkZDEwOSIsInRpZCI6IjNkMmQyYjZmLTA2MWEtNDhiNi1iNGIzLTkzMTJkNjg3ZTNhMSIsInV0aSI6IndBQ25ScXpmbUU2ZUFkMXo4MHF6QUEiLCJ2ZXIiOiIxLjAifQ.j6-knHdiYCy5PF1rht9WN-sz1It7ckE6QgKBpCSysSncRlgBjxUa5MiF5K1pqD4b2Fj9zbLCNqFc1pqzeu-_mT2BsOzcg9-TQSu3iFbdSYPAGsHGGmAqToVea0_vW5vz7tGpPgOHqWcjgKikZpVkp3PFOCq10G-Lyl9IDkwlE7ECZ3IAb8tkxfFhVkDlwlAOSuVruMELiOhLu_MuI6EBS43ZcPmcSfOzh6aU0vHrazfoEYLWVACUYWvD_R-8nR4NCDThVB9RIUmwp0T8a9Sd-9Oo1_EWeHl80poPiixJ1WhDeDpBw_otZBNuRQYIaHmoYNO9tXETSz5uwEFqvp9uIQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-WSS-Opco",
+						"value": "vws",
+						"type": "text"
+					},
+					{
+						"key": "X-WSS-Product_id",
+						"value": "1004D2CWK-0401",
+						"type": "text"
+					},
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "83c1b8823ebc4d91a099fbc37666ba6e",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://apidev.dovercorporation.com/pim/product_by_id/rest",
+					"protocol": "https",
+					"host": [
+						"apidev",
+						"dovercorporation",
+						"com"
+					],
+					"path": [
+						"pim",
+						"product_by_id",
+						"rest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PIM_product_by_ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtnMkxZczJUMENUaklmajRydDZKSXluZW4zOCIsImtpZCI6ImtnMkxZczJUMENUaklmajRydDZKSXluZW4zOCJ9.eyJhdWQiOiJhcGk6Ly9jY2ZkYjZhNy01NWY4LTRmNTQtYWVlNi1kYjA0MDRmZTJkYWQiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8zZDJkMmI2Zi0wNjFhLTQ4YjYtYjRiMy05MzEyZDY4N2UzYTEvIiwiaWF0IjoxNjA3OTU3ODczLCJuYmYiOjE2MDc5NTc4NzMsImV4cCI6MTYwNzk2MTc3MywiYWlvIjoiRTJSZ1lJaFdTTjFXbWp6blJ2bzIxMzJQcHh6ZEF3QT0iLCJhcHBpZCI6Ijc4MWZiZmNiLWM5MGQtNDUwNi1hNGIyLTJhZDNlNTA2MmYwZiIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzNkMmQyYjZmLTA2MWEtNDhiNi1iNGIzLTkzMTJkNjg3ZTNhMS8iLCJvaWQiOiI0YzcxZTA0ZS00NDk1LTQ4MWMtYWUxMy00ZDdhMzcyZGQxMDkiLCJyaCI6IjAuQUFBQWJ5c3RQUm9HdGtpMHM1TVMxb2Zqb2N1X0gzZ055UVpGcExJcTAtVUdMdzhEQUFBLiIsInN1YiI6IjRjNzFlMDRlLTQ0OTUtNDgxYy1hZTEzLTRkN2EzNzJkZDEwOSIsInRpZCI6IjNkMmQyYjZmLTA2MWEtNDhiNi1iNGIzLTkzMTJkNjg3ZTNhMSIsInV0aSI6IjJUTDRDd0laQzB1ekVxa1hxbzlPQUEiLCJ2ZXIiOiIxLjAifQ.BQo1I11Z-Da1vW4_rWIFsnH3bV4PV56GjrKxxjV8-06_bC7j5U2WvTgb9hrfOhfIQSFiEpLv1KbQ0dazC5pKuo-uMztjgz3vNIsjxD01liVawvWuXCI07oZxyes9GMsCKVU2cbA0MQ7s722fqw6Zuj-EvRT86O9T0UBtwlDr9pMXXEuymohrYkuOmlB8LSOcJbb77h726lML5KZQjYY77ZgjIVK_0YfWKSx6-c8ouyPWom2fOABaOlSwPwLx9R8Wnfh9E8_P6x1aI_4PkM52Vw-hcl1VtjTaDuDQC7X50vg9xbWYZ1nV1eLLfVyf1sXZfZ1LkUgjJ0cxw2Il_8dBYA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-WSS-Opco",
+						"value": "vws",
+						"type": "text"
+					},
+					{
+						"key": "X-WSS-Product_id",
+						"value": "1004D2CWK-0401",
+						"type": "text"
+					},
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "83c1b8823ebc4d91a099fbc37666ba6e",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://apidev.dovercorporation.com/pim/product_by_id/rest",
+					"protocol": "https",
+					"host": [
+						"apidev",
+						"dovercorporation",
+						"com"
+					],
+					"path": [
+						"pim",
+						"product_by_id",
+						"rest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PIM_Products",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IjVPZjlQNUY5Z0NDd0NtRjJCT0hIeEREUS1EayIsImtpZCI6IjVPZjlQNUY5Z0NDd0NtRjJCT0hIeEREUS1EayJ9.eyJhdWQiOiJhcGk6Ly9jY2ZkYjZhNy01NWY4LTRmNTQtYWVlNi1kYjA0MDRmZTJkYWQiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8zZDJkMmI2Zi0wNjFhLTQ4YjYtYjRiMy05MzEyZDY4N2UzYTEvIiwiaWF0IjoxNjA5OTIwMTg3LCJuYmYiOjE2MDk5MjAxODcsImV4cCI6MTYwOTkyNDA4NywiYWlvIjoiRTJKZ1lHQko3VEEzREV2THljaE1iLytlWWI4VkFBPT0iLCJhcHBpZCI6Ijc4MWZiZmNiLWM5MGQtNDUwNi1hNGIyLTJhZDNlNTA2MmYwZiIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzNkMmQyYjZmLTA2MWEtNDhiNi1iNGIzLTkzMTJkNjg3ZTNhMS8iLCJvaWQiOiI0YzcxZTA0ZS00NDk1LTQ4MWMtYWUxMy00ZDdhMzcyZGQxMDkiLCJyaCI6IjAuQUFBQWJ5c3RQUm9HdGtpMHM1TVMxb2Zqb2N1X0gzZ055UVpGcExJcTAtVUdMdzhEQUFBLiIsInN1YiI6IjRjNzFlMDRlLTQ0OTUtNDgxYy1hZTEzLTRkN2EzNzJkZDEwOSIsInRpZCI6IjNkMmQyYjZmLTA2MWEtNDhiNi1iNGIzLTkzMTJkNjg3ZTNhMSIsInV0aSI6InRveUVRQ0gzcjAtTVJ6aE1VUnRLQUEiLCJ2ZXIiOiIxLjAifQ.xek0jNkcyOeeWH8xL3kL9xu8iwTIewMHLMgA9ve4ocuMLa0IVOHueB81YANl0fpwN72znJ2V9tQu5FqSBxerqgxxlVMYxvSz-9dT-A9vqIcwOuapORcyMYZtXphaju9budY24AKZ1xa7jGJtTbCnWcj0EBJaAByLK9poXx2A5PPM18VMnGFHxMBrj1bVZOsqqQq4zYlAuY4NOjg0QnTWzzzRA5hePL8QyaluCANKbjUcEM8_eoS3VOWdQ5cUnmvTmVG0BsrWFcCgbn28bJCmLa31i9Au7fYo4bSyIVh8EfseEE0Uq-tlSFTRTPHZnlGFKJ6rjv3pwg2pCy94obCh2w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-WSS-Opco",
+						"value": "vws",
+						"type": "text"
+					},
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "5197ee9dd0574b668fa0426693dddda4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://apidev.dovercorporation.com/pim/products/rest",
+					"protocol": "https",
+					"host": [
+						"apidev",
+						"dovercorporation",
+						"com"
+					],
+					"path": [
+						"pim",
+						"products",
+						"rest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PIM_Categories",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyIsImtpZCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyJ9.eyJhdWQiOiJhcGk6Ly9jY2ZkYjZhNy01NWY4LTRmNTQtYWVlNi1kYjA0MDRmZTJkYWQiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8zZDJkMmI2Zi0wNjFhLTQ4YjYtYjRiMy05MzEyZDY4N2UzYTEvIiwiaWF0IjoxNjEwNTQ1MzczLCJuYmYiOjE2MTA1NDUzNzMsImV4cCI6MTYxMDU0OTI3MywiYWlvIjoiRTJKZ1lEaTI2T3FCajJ3UDU0VElNRVhmdjZXOERBQT0iLCJhcHBpZCI6Ijc4MWZiZmNiLWM5MGQtNDUwNi1hNGIyLTJhZDNlNTA2MmYwZiIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzNkMmQyYjZmLTA2MWEtNDhiNi1iNGIzLTkzMTJkNjg3ZTNhMS8iLCJvaWQiOiI0YzcxZTA0ZS00NDk1LTQ4MWMtYWUxMy00ZDdhMzcyZGQxMDkiLCJyaCI6IjAuQUFBQWJ5c3RQUm9HdGtpMHM1TVMxb2Zqb2N1X0gzZ055UVpGcExJcTAtVUdMdzhEQUFBLiIsInN1YiI6IjRjNzFlMDRlLTQ0OTUtNDgxYy1hZTEzLTRkN2EzNzJkZDEwOSIsInRpZCI6IjNkMmQyYjZmLTA2MWEtNDhiNi1iNGIzLTkzMTJkNjg3ZTNhMSIsInV0aSI6IjVwMzFvRWpfemttN0dxN3JiLVlUQUEiLCJ2ZXIiOiIxLjAifQ.nVqYR8UnK1kCdNCUY6ID6qmp-HE4OFmUmtYpcFKHgxr-zmjANg2mh0wng2lT1Xp-ANajDZTkmu9QPWinqtLHzgLYFyKtOxt2tA-Qm5e08lCllxK3rMnMLMaJzIGI9iNh2NR0FuG_tkDVokXd5uC-jdCNo_HpRW3MMNPkBLZI5sIWawN1dkK7i66zxXG0_3VM37CqVS5qrqifkImCiGiD_tqRKBAxmjmY2pgtvAVRKYjJFpXx0Rhdd_-RQO32H6wJOl2LbqZX4tSGg9tHGAZPYynqrR50fO5dD_f7nyluvI74rVNlh3ddshAkrj5Uv-CJoBhpC2qiRYtN7IRD5S-ttA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-WSS-Opco",
+						"value": "vws",
+						"type": "text"
+					},
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "5197ee9dd0574b668fa0426693dddda4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://apidev.dovercorporation.com/pim/categories/rest/Enerdine/Enerdine.HaloValve/products",
+					"protocol": "https",
+					"host": [
+						"apidev",
+						"dovercorporation",
+						"com"
+					],
+					"path": [
+						"pim",
+						"categories",
+						"rest",
+						"Enerdine",
+						"Enerdine.HaloValve",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AEM_GETPRICE",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtnMkxZczJUMENUaklmajRydDZKSXluZW4zOCIsImtpZCI6ImtnMkxZczJUMENUaklmajRydDZKSXluZW4zOCJ9.eyJhdWQiOiJhcGk6Ly9jY2ZkYjZhNy01NWY4LTRmNTQtYWVlNi1kYjA0MDRmZTJkYWQiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8zZDJkMmI2Zi0wNjFhLTQ4YjYtYjRiMy05MzEyZDY4N2UzYTEvIiwiaWF0IjoxNjA3OTU3ODczLCJuYmYiOjE2MDc5NTc4NzMsImV4cCI6MTYwNzk2MTc3MywiYWlvIjoiRTJSZ1lJaFdTTjFXbWp6blJ2bzIxMzJQcHh6ZEF3QT0iLCJhcHBpZCI6Ijc4MWZiZmNiLWM5MGQtNDUwNi1hNGIyLTJhZDNlNTA2MmYwZiIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzNkMmQyYjZmLTA2MWEtNDhiNi1iNGIzLTkzMTJkNjg3ZTNhMS8iLCJvaWQiOiI0YzcxZTA0ZS00NDk1LTQ4MWMtYWUxMy00ZDdhMzcyZGQxMDkiLCJyaCI6IjAuQUFBQWJ5c3RQUm9HdGtpMHM1TVMxb2Zqb2N1X0gzZ055UVpGcExJcTAtVUdMdzhEQUFBLiIsInN1YiI6IjRjNzFlMDRlLTQ0OTUtNDgxYy1hZTEzLTRkN2EzNzJkZDEwOSIsInRpZCI6IjNkMmQyYjZmLTA2MWEtNDhiNi1iNGIzLTkzMTJkNjg3ZTNhMSIsInV0aSI6IjJUTDRDd0laQzB1ekVxa1hxbzlPQUEiLCJ2ZXIiOiIxLjAifQ.BQo1I11Z-Da1vW4_rWIFsnH3bV4PV56GjrKxxjV8-06_bC7j5U2WvTgb9hrfOhfIQSFiEpLv1KbQ0dazC5pKuo-uMztjgz3vNIsjxD01liVawvWuXCI07oZxyes9GMsCKVU2cbA0MQ7s722fqw6Zuj-EvRT86O9T0UBtwlDr9pMXXEuymohrYkuOmlB8LSOcJbb77h726lML5KZQjYY77ZgjIVK_0YfWKSx6-c8ouyPWom2fOABaOlSwPwLx9R8Wnfh9E8_P6x1aI_4PkM52Vw-hcl1VtjTaDuDQC7X50vg9xbWYZ1nV1eLLfVyf1sXZfZ1LkUgjJ0cxw2Il_8dBYA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-WSS-OPCO_NAME",
+						"type": "text",
+						"value": "vws"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"OrganizationID\":\"739\",\"ItemDetails\":[{\"InventoryItemId\":\"18483927\",\"Quantity\":\"1\",\"PriceList_ID\":null,\"QtyUOM\":\"EA\",\"ProductID\":\"32017\",\"SNo\":\"1\",\"OrganizationID\":\"739\"},{\"InventoryItemId\":\"18477159\",\"Quantity\":\"1\",\"PriceList_ID\":null,\"QtyUOM\":\"EA\",\"ProductID\":\"06160430\",\"SNo\":\"2\",\"OrganizationID\":\"739\"}],\"Customer_id\":\"116143\",\"ShipToORG\":\"876396\",\"DistributorFlag\":\"N\",\"CUR\":\"USD\",\"RequestID\":\"SVUDAF_RwbNEAqsK-0-00\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://apidev.dovercorporation.com/b2b/pricing/rest",
+					"protocol": "https",
+					"host": [
+						"apidev",
+						"dovercorporation",
+						"com"
+					],
+					"path": [
+						"b2b",
+						"pricing",
+						"rest"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

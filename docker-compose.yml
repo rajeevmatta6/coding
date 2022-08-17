@@ -1,0 +1,19 @@
+version: '3'
+services:
+  author:
+    image: docker.r2iadobe.com/dover/aem-author:2021.06
+    container_name: dover-author
+    ports:
+        - "4502:4502"
+        - "58242:58242"
+#  publish:
+#    image: docker.r2iadobe.com/dover/aem-publish:2021.04
+#    container_name: dover-publish
+#    ports:
+#      - "4503:4503"
+#  dispatcher:
+#    image: docker.r2iadobe.com/r2i/dispatcher:latest
+#    ports:
+#      - "80:80"
+#    depends_on:
+#      - "publish"
